@@ -1,0 +1,32 @@
+<div class="container">
+    <h2>{{title}}</h2>
+    <p>{{description}}</p>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>Correo electronico</th>
+            <th>Telefono</th>
+            <th>
+                <button (click)="AddEmployed()" type="button" class="btn btn-success" style="margin-left: 10px">
+                    {{label_add_employed}}
+                </button>
+            </th>
+        </tr>
+        </thead>
+        <tbody *ngFor="let item of employees">
+        <tr>
+            <td>{{item.name}}</td>
+            <td>{{item.lastName}}</td>
+            <td>{{item.email}}</td>
+            <td>{{item.phone}}</td>
+            <td>
+                <button (click)="deleteActivity(item)" type="submit" class="btn btn-danger"
+                        style="margin-left: 10px">Eliminar
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,12 @@
+<div class="container">
+    <h2>{{title}}</h2>
+    <p>{{description}}</p>
+    <span *ngIf="!errors.status" class="text-danger">{{errors.message}}</span>
+    <form>
+        <div class="form-group">
+            <label for="name">Nombre: </label>
+            <input id="name" class="form-control" type="text" [formControl]="name">
+        </div>
+        <button (click)="saveActivity()" type="submit" class="btn btn-default">Guardar</button>
+    </form>
+</div>

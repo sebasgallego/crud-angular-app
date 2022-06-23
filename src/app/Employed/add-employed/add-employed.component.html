@@ -1,0 +1,24 @@
+<div class="container">
+    <h2>{{title}}</h2>
+    <p>{{description}}</p>
+    <span *ngIf="!errors.status" class="text-danger">{{errors.message}}</span>
+    <form [formGroup]="formGroup">
+        <div class="form-group">
+            <label for="name">Nombres: </label>
+            <input id="name" class="form-control" type="text" formControlName="name">
+        </div>
+        <div class="form-group">
+            <label for="name">Apellidos: </label>
+            <input id="lastName" class="form-control" type="text" formControlName="lastName">
+        </div>
+        <div class="form-group">
+            <label for="name">Corroe electronico: </label>
+            <input id="email" class="form-control" type="email" formControlName="email">
+        </div>
+        <div class="form-group">
+            <label for="name">Numero de telefono: </label>
+            <input id="phone" class="form-control" type="number" formControlName="phone">
+        </div>
+        <button (click)="saveEmployed()" type="submit" class="btn btn-default">Guardar</button>
+    </form>
+</div>

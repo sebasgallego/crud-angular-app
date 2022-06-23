@@ -1,0 +1,90 @@
+<div class="container">
+    <h2>{{title}}</h2>
+    <p>{{description}}</p>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Nombre actividad</th>
+            <th>Estado</th>
+            <th>Empleado</th>
+            <th>Fecha de inicio</th>
+            <th>Días de retraso</th>
+            <th>
+                <button (click)="AddActivity()" type="button" class="btn btn-success" style="margin-left: 10px">
+                    {{label_add_activities}}
+                </button>
+            </th>
+        </tr>
+        </thead>
+
+        <tbody *ngFor="let activity of activities">
+
+        <tr *ngIf="activity.status_id == 0" class="warning">
+            <td>{{activity.name}}</td>
+            <td>{{activity.status}}</td>
+            <div *ngIf="activity.employed != null; then thenBlock else elseBlock"></div>
+            <ng-template #thenBlock>
+                <td>{{activity.employed!.name}}</td>
+            </ng-template>
+            <ng-template #elseBlock>
+                <td></td>
+            </ng-template>
+            <td>{{activity.start_date!}}</td>
+            <td>{{activity.delay_days!}}</td>
+            <td>
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{employedAssigned}}
+                    </button>
+                    <div *ngFor="let employed of employees" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a  (click)="assignedEmployed(activity,employed)" class="dropdown-item">{{employed.name + " " + employed.lastName}}</a>
+                    </div>
+                </div>
+                <button (click)="deleteActivity(activity)" type="submit" class="btn btn-danger"
+                        style="margin-left: 10px">Eliminar
+                </button>
+            </td>
+        </tr>
+
+        <tr *ngIf="activity.status_id == 1" class="active">
+            <td>{{activity.id}}</td>
+            <td>{{activity.status}}</td>
+            <div *ngIf="activity.employed != null; then thenBlock else elseBlock"></div>
+            <ng-template #thenBlock>
+                <td>{{activity.employed!.name}}</td>
+            </ng-template>
+            <ng-template #elseBlock>
+                <td></td>
+            </ng-template>
+            <td>{{activity.start_date!}}</td>
+            <td>{{activity.delay_days!}}</td>
+            <td>
+                <button type="submit" class="btn btn-success">Asignar empleado</button>
+                <button type="submit" class="btn btn-warning" style="margin-left: 10px">Editar</button>
+                <button type="submit" class="btn btn-danger" style="margin-left: 10px">Eliminar</button>
+            </td>
+        </tr>
+
+        <tr *ngIf="activity.status_id == 2" class="danger">
+            <td>{{activity.name}}</td>
+            <td>{{activity.status}}</td>
+            <td *ngIf="activity.employed != null">{{activity.employed!.name}}</td>
+            <td>{{activity.start_date}}</td>
+            <td>{{activity.delay_days}}</td>
+            <td></td>
+        </tr>
+
+        <tr *ngIf="activity.status_id == 2" class="success">
+            <td>{{activity.name}}</td>
+            <td>{{activity.status}}</td>
+            <td *ngIf="activity.employed != null">{{activity.employed!.name}}</td>
+            <td>{{activity.start_date}}</td>
+            <td>{{activity.delay_days}}</td>
+            <td></td>
+        </tr>
+
+        </tbody>
+
+    </table>
+</div>
