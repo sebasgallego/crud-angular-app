@@ -13,7 +13,7 @@ import {ResponseError} from "../../Modelo/ResponseError";
 export class AddActivityComponent implements OnInit {
 
     title = 'Agregar nueva actividad';
-    description = 'Crea una nueva actividad.';
+    description = 'Por favor ingresar el nombre de su actividad';
     name = new FormControl('');
     errors = new ResponseError();
 

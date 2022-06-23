@@ -1,24 +1,41 @@
 <div class="container">
     <h2>{{title}}</h2>
-    <p>{{description}}</p>
     <span *ngIf="!errors.status" class="text-danger">{{errors.message}}</span>
-    <form [formGroup]="formGroup">
-        <div class="form-group">
-            <label for="name">Nombres: </label>
-            <input id="name" class="form-control" type="text" formControlName="name">
+    <div class="panel panel-primary">
+        <div class="panel-heading">{{description}}</div>
+        <div class="panel-body">
+            <form [formGroup]="formGroup">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Nombres:</label>
+                            <input type="text" class="form-control" name="fname" formControlName="name">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Apellidos:</label>
+                            <input type="text" class="form-control" name="lname" formControlName="lastName">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Corroe electronico:</label>
+                            <input type="text" class="form-control" name="email" formControlName="email">
+                        </div>
+                    </div>
+                    <div class='col-md-6'>
+                        <div class="form-group">
+                            <label class="control-label">Numero de telefono:</label>
+                            <input type="text" class="form-control" name="number" formControlName="phone">
+                        </div>
+                    </div>
+                </div>
+                <input (click)="saveEmployed()" type="submit" class="btn btn-primary" value="Guardar">
+            </form>
         </div>
-        <div class="form-group">
-            <label for="name">Apellidos: </label>
-            <input id="lastName" class="form-control" type="text" formControlName="lastName">
-        </div>
-        <div class="form-group">
-            <label for="name">Corroe electronico: </label>
-            <input id="email" class="form-control" type="email" formControlName="email">
-        </div>
-        <div class="form-group">
-            <label for="name">Numero de telefono: </label>
-            <input id="phone" class="form-control" type="number" formControlName="phone">
-        </div>
-        <button (click)="saveEmployed()" type="submit" class="btn btn-default">Guardar</button>
-    </form>
+    </div>
+
 </div>

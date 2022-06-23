@@ -39,7 +39,7 @@
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 {{employedAssigned}}
                             </button>
-                            <div  class="dropdown-menu"
+                            <div class="dropdown-menu"
                                  aria-labelledby="dropdownMenuButton">
                                 <a *ngFor="let employed of employees" (click)="assignedEmployed(activity,employed)"
                                    class="dropdown-item">{{employed.name + " " + employed.lastName}}</a>

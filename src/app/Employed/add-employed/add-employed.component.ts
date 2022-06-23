@@ -13,7 +13,7 @@ import {Employed} from "../../Modelo/Employed";
 export class AddEmployedComponent implements OnInit {
 
     title = 'Agregar nuevo empleado';
-    description = 'Crea una nuevo empleado.';
+    description = 'Por favor ingrese sus datos basicos';
     errors = new ResponseError();
     formGroup = new FormGroup({
         name: new FormControl(''),
