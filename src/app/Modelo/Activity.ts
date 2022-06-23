@@ -4,11 +4,20 @@ export class Activity {
 
     private _id: String | undefined;
     private _name: String | undefined;
-    private _employed: Employed | undefined;
+    private _name_employed: String | undefined;
+    private _employees_id: String | undefined;
     private _status_id: number | undefined;
     private _status: String | undefined;
     private _start_date: String | undefined;
     private _delay_days: String | undefined;
+
+    get name_employed(): String | undefined {
+        return this._name_employed;
+    }
+
+    set name_employed(value: String | undefined) {
+        this._name_employed = value;
+    }
 
     get id(): String | undefined {
         return this._id;
@@ -34,12 +43,12 @@ export class Activity {
         this._name = value;
     }
 
-    get employed(): Employed | undefined {
-        return this._employed;
+    get employees_id(): String | undefined {
+        return this._employees_id;
     }
 
-    set employed(value: Employed | undefined) {
-        this._employed = value;
+    set employees_id(value: String | undefined) {
+        this._employees_id = value;
     }
 
     get status_id(): number | undefined {

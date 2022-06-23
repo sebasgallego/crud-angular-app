@@ -4,6 +4,7 @@ import {ServiceService} from "../../Service/service.service";
 import {Activity} from "../../Modelo/Activity";
 import {ResponseError} from "../../Modelo/ResponseError";
 import {Employed} from "../../Modelo/Employed";
+import {FormControl} from "@angular/forms";
 
 @Component({
     selector: 'app-list-activity',
@@ -19,11 +20,13 @@ export class ListActivityComponent implements OnInit {
     activities: Activity[] = [];
     employees: Employed[] = [];
     employedAssigned = 'Asignar empleado';
+    date_star = new FormControl('');
 
     constructor(private service: ServiceService, private router: Router) {
     }
 
     ngOnInit(): void {
+        console.log(this.date_star)
         this.service.getActivities()
             .subscribe(data => {
                 this.activities = data;
@@ -36,9 +39,44 @@ export class ListActivityComponent implements OnInit {
             })
     }
 
-    assignedEmployed(activities: Activity,employed: Employed) {
-        console.log("*********"+activities.name)
-        console.log("*********"+employed.name)
+    assignedDateStar(activities: Activity) {
+        activities.start_date = this.date_star.value!;
+        this.service.assignedDateStar(activities)
+            .subscribe(
+                response => {
+                    if (response.status) {
+                        this.ngOnInit();
+                    } else {
+                        this.errors.message = response.message;
+                        this.errors.status = response.status;
+                        console.log(response.message);
+                    }
+                },
+                err => {
+                    this.errors.message = err.error.message;
+                    this.errors.status = false;
+                    console.log(this.errors);
+                })
+    }
+
+    assignedEmployed(activities: Activity, employed: Employed) {
+        activities.employees_id = employed.id
+        this.service.assignedActivity(activities)
+            .subscribe(
+                response => {
+                    if (response.status) {
+                        this.ngOnInit();
+                    } else {
+                        this.errors.message = response.message;
+                        this.errors.status = response.status;
+                        console.log(response.message);
+                    }
+                },
+                err => {
+                    this.errors.message = err.error.message;
+                    this.errors.status = false;
+                    console.log(this.errors);
+                })
     }
 
     AddActivity() {
