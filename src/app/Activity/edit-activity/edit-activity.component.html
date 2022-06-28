@@ -1,0 +1,54 @@
+<div class="container">
+    <h2>{{title}}</h2>
+    <span *ngIf="!errors.status" class="text-danger">{{errors.message}}</span>
+    <div class="panel panel-primary">
+        <div class="panel-heading">{{description}}</div>
+        <div class="panel-body">
+            <form>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Nombre:</label>
+                            <input type="text" class="form-control" name="name" [formControl]="name">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Empleado:</label>
+                            <div class="col-sm">
+                                <div class="dropdown">
+                                    <button formControlName="name" class="btn btn-primary dropdown-toggle" type="button"
+                                            id="dropdownMenuButton"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        {{employedAssigned}}
+                                    </button>
+                                    <div class="dropdown-menu"
+                                         aria-labelledby="dropdownMenuButton">
+                                        <a *ngFor="let employed of employees" (click)="assignedEmployed(employed)"
+                                           class="dropdown-item">{{employed.name + " " + employed.lastName}}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class='col-md-6'>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm">
+                                    <form>
+                                        <input type="datetime-local" id="start_date" name="start_date"
+                                               [formControl]="start_date">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input (click)="save()" type="submit" class="btn btn-primary" value="Guardar">
+            </form>
+        </div>
+    </div>
+
+</div>

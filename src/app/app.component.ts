@@ -15,7 +15,7 @@ export class AppComponent {
     }
 
     ngOnInit(): void {
-        //this.router.navigate(["list-Activity"])
+        this.router.navigate(["list-Activity"])
     }
 
     ListActivity() {

@@ -1,9 +1,9 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {AddActivityComponent} from "./Activitie/add-activity/add-activity.component";
-import {EditActivityComponent} from "./Activitie/edit-activity/edit-activity.component";
-import {DeleteActivityComponent} from "./Activitie/delete-activity/delete-activity.component";
-import {ListActivityComponent} from "./Activitie/list-activity/list-activity.component";
+import {AddActivityComponent} from "./Activity/add-activity/add-activity.component";
+import {EditActivityComponent} from "./Activity/edit-activity/edit-activity.component";
+import {DeleteActivityComponent} from "./Activity/delete-activity/delete-activity.component";
+import {ListActivityComponent} from "./Activity/list-activity/list-activity.component";
 import {EditEmployedComponent} from "./Employed/edit-employed/edit-employed.component";
 import {ListEmployedComponent} from "./Employed/list-employed/list-employed.component";
 import {AddEmployedComponent} from "./Employed/add-employed/add-employed.component";

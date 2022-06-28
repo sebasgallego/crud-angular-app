@@ -17,17 +17,24 @@ export class ServiceService {
         return this.http.post<any>(this.Url_base + 'activity/save', {name: nameActivity});
     }
 
+    editActivity(params: Activity) {
+        return this.http.post<any>(this.Url_base + 'activity/edit', params);
+    }
+
     assignedActivity(params: Activity) {
         return this.http.post<any>(this.Url_base + 'activity/assigned', params);
     }
 
-        assignedDateStar(params: Activity) {
+    assignedDateStar(params: Activity) {
         return this.http.post<any>(this.Url_base + 'activity/date_star', params);
     }
 
-
     deleteActivity(params: Activity) {
         return this.http.post<any>(this.Url_base + 'activity/delete', params);
+    }
+
+    finishedActivity(params: Activity) {
+        return this.http.post<any>(this.Url_base + 'activity/finished', params);
     }
 
     getActivities() {
